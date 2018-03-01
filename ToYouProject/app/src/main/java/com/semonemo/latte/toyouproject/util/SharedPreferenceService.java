@@ -9,13 +9,7 @@ import android.content.SharedPreferences;
 
 public class SharedPreferenceService {
     private static final String SETTING = "setting";
-    public static final String KAKAO_ID = "_kakao_id_";
     public static final String USER_ID = "_user_id_";
-    public static final String USER_NAME = "_user_name_";
-    public static final String JWT_TOKEN = "_jwt_token_";
-    public static final String USER_PROFILE_IMAGE_PATH = "_user_image_url_";
-    public static final String LOGIN_TRY_COUNT = "_login_try_count_";
-    public static final String PUSH_NOTI_OFF = "_push_noti_off_";
 
     private static SharedPreferenceService sharedPreferencesManager;
     private SharedPreferences pref;
