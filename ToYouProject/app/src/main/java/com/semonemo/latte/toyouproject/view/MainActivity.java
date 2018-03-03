@@ -12,10 +12,7 @@ import com.semonemo.latte.toyouproject.view.LoginActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    @BindView(R.id.btn_login)
-    Button btnLogin;
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
