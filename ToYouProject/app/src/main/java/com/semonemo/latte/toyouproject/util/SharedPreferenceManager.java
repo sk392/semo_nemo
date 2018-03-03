@@ -7,18 +7,22 @@ import android.content.SharedPreferences;
  * Created by latte on 2018. 1. 17..
  */
 
-public class SharedPreferenceService {
+public class SharedPreferenceManager {
     private static final String SETTING = "setting";
     public static final String USER_ID = "_user_id_";
+    public static final String USER_NAME = "_user_name_";
+    public static final String USER_TOKEN_ACCESS = "_user_access_";
+    public static final String USER_TOKEN_REFRESH = "_user_refresh_";
+    public static final String USER_PROFILE = "_user_profile_";
 
-    private static SharedPreferenceService sharedPreferencesManager;
+    private static SharedPreferenceManager sharedPreferencesManager;
     private SharedPreferences pref;
 
-    public static SharedPreferenceService getInstance(){
+    public static SharedPreferenceManager getInstance(){
         if (sharedPreferencesManager == null) {
-            synchronized (SharedPreferenceService.class) {
+            synchronized (SharedPreferenceManager.class) {
                 if (sharedPreferencesManager == null)
-                    sharedPreferencesManager = new SharedPreferenceService();
+                    sharedPreferencesManager = new SharedPreferenceManager();
             }
         }
         return sharedPreferencesManager;
