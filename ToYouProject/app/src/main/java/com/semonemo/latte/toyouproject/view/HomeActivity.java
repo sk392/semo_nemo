@@ -1,6 +1,5 @@
 package com.semonemo.latte.toyouproject.view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -15,7 +14,7 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         String name = SharedPreferenceManager.getInstance().getPrefStringData(SharedPreferenceManager.USER_NAME);
-        Toast.makeText(getApplicationContext(),"안녕하세요"+name + SharedPreferenceManager.getInstance().getPrefStringData(SharedPreferenceManager.test),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"안녕하세요"+name,Toast.LENGTH_SHORT).show();
         Session.getCurrentSession().close();
     }
 }
