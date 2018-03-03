@@ -3,7 +3,8 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
-/app/src/main/res/values/ignore_values
+/app/src/main/res/values/api_keys.xml
+/app/src/main/res/values/api_urls.xml
 .DS_Store
 /build
 /captures
