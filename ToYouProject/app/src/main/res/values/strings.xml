@@ -5,8 +5,10 @@
     <string name="name">이름</string>
     <string name="hint_name_message">사용할 이름을 작성해주세요</string>
     <string name="signup_name_saved">이름이 저장되었습니다</string>
-    <string name="signup_invite">상대 초대하기</string>
+    <string name="signup_invite">카카오톡으로 초대하기</string>
     <string name="signup_select_background">배경화면 고르기</string>
     <string name="signup_invite_message">상대방의 초대 코드를 입력해주세요</string>
     <string name="signup_my_code">내 초대 코드</string>
+    <string name="link_message_button">다운받으러 가기!</string>
+    <string name="link_message_content">님이 초대 메시지를 보냈습니다! \n초대 코드 : </string>
 </resources>

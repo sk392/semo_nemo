@@ -95,13 +95,9 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onSuccess(UserProfile result) {
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_NAME,result.getNickname());
-                if(SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_ID)==result.getId())
-                    SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.test,"true");
-                else
-                    SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.test,"false");
-
-
                 SharedPreferenceManager.getInstance().setPrefLongData(SharedPreferenceManager.USER_ID,result.getId());
+                long code = result.getId()%100000000;
+                SharedPreferenceManager.getInstance().setPrefLongData(SharedPreferenceManager.USER_CODE,code);
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_PROFILE,result.getProfileImagePath());
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_TOKEN_ACCESS
                         ,Session.getCurrentSession().getTokenInfo().getAccessToken().toString());
