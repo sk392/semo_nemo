@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#162243</color>
+    <color name="colorPrimaryDark">#162243</color>
     <color name="colorAccent">#FF4081</color>
     <color name="bg_login_button">#fae100</color>
     <color name="transparent">#00000000</color>
+    <color name="dark_gray">#9b9b9b</color>
     <color name="dimmed_color">#33000000</color>
+    <color name="reddish_pink">#ff335f</color>
 </resources>

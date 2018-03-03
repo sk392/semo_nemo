@@ -9,6 +9,7 @@ import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
+import com.tsengvn.typekit.Typekit;
 
 /**
  * Created by latte on 2018. 3. 3..
@@ -71,11 +72,11 @@ public class GlobalApplication extends Application {
         KakaoSDK.init(new KakaoSDKAdapter());
 
 
-/*
         Typekit.getInstance()
-                .addNormal(Typekit.createFromAsset(this, "KakaoOTFRegular.otf"))
-                .addBold(Typekit.createFromAsset(this, "KakaoOTFBold.otf"));
-*/
+                .addNormal(Typekit.createFromAsset(this, "NanumBarunGothic.ttf"))
+                .addBold(Typekit.createFromAsset(this, "NanumBarunGothicBold.ttf"))
+                .addCustom1(Typekit.createFromAsset(this, "NanumBarunGothicUltraLight.ttf"))
+                .addCustom2(Typekit.createFromAsset(this, "FISH&CHIPS-Regular.ttf"));
     }
     /**
      * singleton 애플리케이션 객체를 얻는다.

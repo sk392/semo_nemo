@@ -1,6 +1,9 @@
 package com.semonemo.latte.toyouproject.view.layout;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -9,11 +12,14 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.semonemo.latte.toyouproject.R;
+import com.semonemo.latte.toyouproject.view.HomeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by latte on 2018. 3. 3..
@@ -23,6 +29,7 @@ public class AppbarLayout extends FrameLayout {
 
     private Context mContext;
     private View mView;
+    private int mThemeType;
 
     public static final int MAIN_PAGE_APPBAR = 1;
     public static final int MY_PAGE_APPBAR = 2;
@@ -44,9 +51,12 @@ public class AppbarLayout extends FrameLayout {
         mView = LayoutInflater.from(mContext).inflate(R.layout.layout_appbar, this, false);
         this.addView(mView);
         ButterKnife.bind(this);
+        Typeface type = Typeface.createFromAsset(mContext.getAssets(),"FISH&CHIPS-Regular.ttf");
+        appbarTitle.setTypeface(type);
     }
 
     public void setTheme(int theme) {
+        mThemeType = theme;
         switch (theme) {
             case MAIN_PAGE_APPBAR:
                 setThemeMain();
@@ -72,10 +82,10 @@ public class AppbarLayout extends FrameLayout {
         appbarRightLeftBtn.setVisibility(VISIBLE);
         appbarTitle.setVisibility(VISIBLE);
 
-        appbarLeftBtn.setBackground(getResources().getDrawable(R.drawable.account));
-        appbarRightBtn.setBackground(getResources().getDrawable(R.drawable.account));
-        appbarRightLeftBtn.setBackground(getResources().getDrawable(R.drawable.account));
-        appbarTitle.setText(R.string.title_main);
+        appbarLeftBtn.setImageResource(R.drawable.my_icon);
+        appbarRightLeftBtn.setImageResource(R.drawable.add_letter_icon);
+        appbarRightBtn.setImageResource(R.drawable.setting_icon);
+        appbarTitle.setText(R.string.appbar_title_main);
     }
 
     private void setThemeMy() {
@@ -96,7 +106,7 @@ public class AppbarLayout extends FrameLayout {
         appbarTitle.setVisibility(VISIBLE);
 
         appbarLeftBtn.setBackground(getResources().getDrawable(R.drawable.kakao_default_profile_image));
-        appbarTitle.setText(R.string.title_main);
+        appbarTitle.setText(R.string.appbar_title_main);
 
     }
 
@@ -109,10 +119,40 @@ public class AppbarLayout extends FrameLayout {
         appbarLeftBtn.setBackground(getResources().getDrawable(R.drawable.kakaostory_icon));
         appbarRightBtn.setBackground(getResources().getDrawable(R.drawable.kakaostory_icon));
     }
+
     private void setThemedefault() {
         appbarLeftBtn.setVisibility(GONE);
         appbarRightBtn.setVisibility(GONE);
         appbarRightLeftBtn.setVisibility(GONE);
         appbarTitle.setVisibility(GONE);
+    }
+
+
+    @OnClick({R.id.appbar_left_btn, R.id.appbar_right_left_btn, R.id.appbar_right_btn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.appbar_left_btn:
+                if(this.mThemeType==MAIN_PAGE_APPBAR){
+                    Toast.makeText(mContext,"마이페이지 이동",Toast.LENGTH_SHORT).show();
+                }else{
+                    ((Activity)mContext).onBackPressed();
+                }
+                break;
+            case R.id.appbar_right_left_btn:
+                if(this.mThemeType==MAIN_PAGE_APPBAR){
+                    Toast.makeText(mContext,"편지 작성페이지 이동",Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.appbar_right_btn:
+                if(this.mThemeType==MAIN_PAGE_APPBAR || this.mThemeType==MY_PAGE_APPBAR){
+                    Toast.makeText(mContext,"설정페이지 이동",Toast.LENGTH_SHORT).show();
+                }else if(this.mThemeType == SIGNUP_PAGE_APPBAR){
+                    Intent intent = new Intent(mContext, HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    mContext.startActivity(intent);
+                    ((Activity)mContext).finish();
+                }
+                break;
+        }
     }
 }

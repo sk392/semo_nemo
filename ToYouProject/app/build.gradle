@@ -23,6 +23,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.0.2'
@@ -39,6 +40,11 @@ dependencies {
     //다이얼로그
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    //viewpagerindicator
+    implementation 'com.romandanylyk:pageindicatorview:1.0.0'
+
+    //fontlibrary
+    implementation 'com.github.katoro:typekit:1.0.1'
 
     //cardview 라이브러리
     implementation 'com.android.support:cardview-v7:27.0.2'
