@@ -21,7 +21,7 @@ import com.semonemo.latte.toyouproject.util.SharedPreferenceManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     private static final String TAG = "LoginActivity";
     private SessionCallback callback;
 
@@ -95,14 +95,21 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UserProfile result) {
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_NAME,result.getNickname());
+                if(SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_ID)==result.getId())
+                    SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.test,"true");
+                else
+                    SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.test,"false");
+
+
                 SharedPreferenceManager.getInstance().setPrefLongData(SharedPreferenceManager.USER_ID,result.getId());
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_PROFILE,result.getProfileImagePath());
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_TOKEN_ACCESS
                         ,Session.getCurrentSession().getTokenInfo().getAccessToken().toString());
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_TOKEN_REFRESH
                         ,Session.getCurrentSession().getTokenInfo().getRefreshToken().toString());
-                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

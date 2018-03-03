@@ -12,6 +12,7 @@ public class SharedPreferenceManager {
     public static final String USER_ID = "_user_id_";
     public static final String USER_NAME = "_user_name_";
     public static final String USER_TOKEN_ACCESS = "_user_access_";
+    public static final String test = "test";
     public static final String USER_TOKEN_REFRESH = "_user_refresh_";
     public static final String USER_PROFILE = "_user_profile_";
 

@@ -25,7 +25,8 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_api_key" />
 
-        <activity android:name=".view.HomeActivity"></activity>
+        <activity android:name=".view.HomeActivity" />
+        <activity android:name=".view.BaseActivity"></activity>
     </application>
 
 </manifest>

@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="bg_login_button">#fae100</color>
+    <color name="transparent">#00000000</color>
+    <color name="dimmed_color">#33000000</color>
 </resources>
