@@ -109,35 +109,6 @@ public class SignupActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-       /* FeedTemplate params = FeedTemplate
-                .newBuilder(ContentObject.newBuilder("ToYou 초대 메시지",
-                        getResources().getString(R.string.image_url),
-                        LinkObject.newBuilder().setWebUrl(getResources().getString(R.string.market_url))
-                                .setMobileWebUrl(getResources().getString(R.string.market_url)).build())
-                        .setDescrption(SharedPreferenceManager.getInstance()
-                                .getPrefStringData(SharedPreferenceManager.USER_NAME)
-                                +getResources().getString(R.string.link_message_content)
-                                +SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_CODE))
-                        .build())
-                .addButton(new ButtonObject(getResources().getString(R.string.link_message_button), LinkObject.newBuilder()
-                        .setWebUrl(getResources().getString(R.string.market_url))
-                        .setMobileWebUrl(getResources().getString(R.string.market_url))
-                        .build()))
-                .build();
-
-        KakaoLinkService.getInstance().sendDefault(this, params, new ResponseCallback<KakaoLinkResponse>() {
-            @Override
-            public void onFailure(ErrorResult errorResult) {
-                Logger.e(errorResult.toString());
-            }
-
-            @Override
-            public void onSuccess(KakaoLinkResponse result) {
-
-            }
-        });*/
-
-
 
     }
 }

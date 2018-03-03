@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="appbar_size">56dp</dimen>
+    <dimen name="appbar_size">45dp</dimen>
     <dimen name="common_side_size">16dp</dimen>
-    <dimen name="appbar_icon_size">36dp</dimen>
+    <dimen name="appbar_icon_size">27dp</dimen>
     <dimen name="signup_background_image_size">120dp</dimen>
 </resources>

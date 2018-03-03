@@ -9,18 +9,18 @@
     <ImageView
         android:layout_width="@dimen/appbar_icon_size"
         android:layout_height="@dimen/appbar_icon_size"
+
         android:id="@+id/appbar_left_btn"
         android:layout_centerVertical="true"
         />
 
     <TextView
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="title"
         android:id="@+id/appbar_title"
-        android:layout_centerVertical="true"
+
+        android:layout_centerInParent="true"
         />
     <ImageView
         android:layout_width="@dimen/appbar_icon_size"

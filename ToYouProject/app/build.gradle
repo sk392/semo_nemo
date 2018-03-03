@@ -39,6 +39,7 @@ dependencies {
     //다이얼로그
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    implementation 'com.romandanylyk:pageindicatorview:1.0.0'
 
     //cardview 라이브러리
     implementation 'com.android.support:cardview-v7:27.0.2'
