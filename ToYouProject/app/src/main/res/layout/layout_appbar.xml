@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:layout_height="@dimen/appbar_size">
+    android:layout_height="@dimen/appbar_size"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix">
     <ImageView
         android:layout_width="@dimen/appbar_icon_size"
         android:layout_height="@dimen/appbar_icon_size"
-
         android:id="@+id/appbar_left_btn"
         android:layout_centerVertical="true"
         />
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:text="title"
         android:id="@+id/appbar_title"
-
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/appbar_title_size"
         android:layout_centerInParent="true"
         />
     <ImageView

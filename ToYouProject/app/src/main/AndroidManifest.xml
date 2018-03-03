@@ -27,7 +27,8 @@
 
         <activity android:name=".view.HomeActivity" />
         <activity android:name=".view.BaseActivity" />
-        <activity android:name=".view.SignupActivity"></activity>
+        <activity android:name=".view.SignupActivity" />
+        <activity android:name=".view.LetterDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -3,5 +3,7 @@
     <dimen name="appbar_size">45dp</dimen>
     <dimen name="common_side_size">16dp</dimen>
     <dimen name="appbar_icon_size">27dp</dimen>
+    <dimen name="appbar_title_size">36sp</dimen>
+    <dimen name="main_letter_date_size">50sp</dimen>
     <dimen name="signup_background_image_size">120dp</dimen>
 </resources>

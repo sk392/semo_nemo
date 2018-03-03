@@ -1,5 +1,6 @@
 package com.semonemo.latte.toyouproject.view;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -111,7 +112,9 @@ public class HomeActivity extends BaseActivity {
             long curDateTime = new Date().getTime();
 
             long minute = (curDateTime - reqDateTime);
-            tvDDay.setText(minute + "분");
+            Typeface type = Typeface.createFromAsset(getActivity().getAssets(),"FISH&CHIPS-Regular.ttf");
+            tvDDay.setTypeface(type);
+            tvDDay.setText("D-"+minute);
             return rootView;
         }
 

@@ -17,8 +17,9 @@
         android:layout_height="110dp" />
     <TextView
         android:id="@+id/tv_d_day"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
         android:textSize="50sp"
+        android:textColor="@color/reddish_pink"
         android:text="D-20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

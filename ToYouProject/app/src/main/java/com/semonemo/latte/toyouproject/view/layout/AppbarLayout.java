@@ -3,6 +3,7 @@ package com.semonemo.latte.toyouproject.view.layout;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -50,6 +51,8 @@ public class AppbarLayout extends FrameLayout {
         mView = LayoutInflater.from(mContext).inflate(R.layout.layout_appbar, this, false);
         this.addView(mView);
         ButterKnife.bind(this);
+        Typeface type = Typeface.createFromAsset(mContext.getAssets(),"FISH&CHIPS-Regular.ttf");
+        appbarTitle.setTypeface(type);
     }
 
     public void setTheme(int theme) {
@@ -82,7 +85,7 @@ public class AppbarLayout extends FrameLayout {
         appbarLeftBtn.setImageResource(R.drawable.my_icon);
         appbarRightLeftBtn.setImageResource(R.drawable.add_letter_icon);
         appbarRightBtn.setImageResource(R.drawable.setting_icon);
-        appbarTitle.setText(R.string.title_main);
+        appbarTitle.setText(R.string.appbar_title_main);
     }
 
     private void setThemeMy() {
@@ -103,7 +106,7 @@ public class AppbarLayout extends FrameLayout {
         appbarTitle.setVisibility(VISIBLE);
 
         appbarLeftBtn.setBackground(getResources().getDrawable(R.drawable.kakao_default_profile_image));
-        appbarTitle.setText(R.string.title_main);
+        appbarTitle.setText(R.string.appbar_title_main);
 
     }
 
