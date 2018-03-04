@@ -52,6 +52,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
+    //firebase
+    implementation 'com.google.firebase:firebase-database:11.8.0'
+
     // 카카오링크 sdk를 사용하기 위해 필요.
     implementation group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
 

@@ -73,10 +73,10 @@ public class GlobalApplication extends Application {
 
 
         Typekit.getInstance()
-                .addNormal(Typekit.createFromAsset(this, "NanumBarunGothic.ttf"))
-                .addBold(Typekit.createFromAsset(this, "NanumBarunGothicBold.ttf"))
-                .addCustom1(Typekit.createFromAsset(this, "NanumBarunGothicUltraLight.ttf"))
-                .addCustom2(Typekit.createFromAsset(this, "FISH&CHIPS-Regular.ttf"));
+                .addNormal(Typekit.createFromAsset(this, "NanumBarunGothicUltraLight.ttf"))
+                .addBold(Typekit.createFromAsset(this, "NanumBarunGothic.ttf"))
+                .addItalic(Typekit.createFromAsset(this, "FISH&CHIPS-Regular.ttf"));
+
     }
     /**
      * singleton 애플리케이션 객체를 얻는다.
