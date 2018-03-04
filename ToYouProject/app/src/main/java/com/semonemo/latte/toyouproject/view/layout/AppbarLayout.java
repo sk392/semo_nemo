@@ -51,8 +51,7 @@ public class AppbarLayout extends FrameLayout {
         mView = LayoutInflater.from(mContext).inflate(R.layout.layout_appbar, this, false);
         this.addView(mView);
         ButterKnife.bind(this);
-        Typeface type = Typeface.createFromAsset(mContext.getAssets(),"FISH&CHIPS-Regular.ttf");
-        appbarTitle.setTypeface(type);
+        appbarTitle.setTypeface(Typeface.createFromAsset(mContext.getAssets(),"FISH&CHIPS-Regular.ttf"));
     }
 
     public void setTheme(int theme) {

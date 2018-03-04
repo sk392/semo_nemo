@@ -1,5 +1,6 @@
 package com.semonemo.latte.toyouproject.view;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rd.PageIndicatorView;
@@ -25,9 +27,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeActivity extends BaseActivity {
-
+    public static final String LETTER_DATA = "_letter_data_";
 
     @BindView(R.id.pi_home)
     PageIndicatorView piHome;
@@ -86,7 +89,9 @@ public class HomeActivity extends BaseActivity {
         private static String LETTER = "LETTER_NAME";
         @BindView(R.id.tv_d_day)
         TextView tvDDay;
-
+        @BindView(R.id.iv_item_letter)
+        ImageView ivItemLetter;
+        private LetterDto letterDto;
         public LetterFragment() {
         }
 
@@ -105,18 +110,27 @@ public class HomeActivity extends BaseActivity {
                 , @Nullable Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main_letter, container, false);
             ButterKnife.bind(this, rootView);
-            LetterDto letterDto = (LetterDto) getArguments().getSerializable(LETTER);
+            letterDto = (LetterDto) getArguments().getSerializable(LETTER);
 
             long reqDateTime = letterDto.getRegDate().getTime();
 
             long curDateTime = new Date().getTime();
 
             long minute = (curDateTime - reqDateTime);
-            Typeface type = Typeface.createFromAsset(getActivity().getAssets(),"FISH&CHIPS-Regular.ttf");
+
+            Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "FISH&CHIPS-Regular.ttf");
             tvDDay.setTypeface(type);
-            tvDDay.setText("D-"+minute);
+            tvDDay.setText("D-" + minute);
             return rootView;
         }
 
+        @OnClick(R.id.iv_item_letter)
+        public void onViewClicked() {
+            Intent intent = new Intent(getActivity().getApplicationContext(),LetterDetailActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(LETTER_DATA,letterDto);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 }

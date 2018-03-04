@@ -34,6 +34,7 @@
         app:piv_interactiveAnimation="true"
         app:piv_animationType="scale"
         app:piv_unselectedColor="@color/dark_gray"
+        app:piv_selectedColor="@color/reddish_pink"
         app:piv_radius="4dp"
         app:layout_constraintTop_toBottomOf="@id/appbar_home"
         app:layout_constraintLeft_toLeftOf="parent"
