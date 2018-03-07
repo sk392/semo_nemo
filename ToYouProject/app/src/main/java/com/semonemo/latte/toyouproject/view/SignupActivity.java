@@ -25,14 +25,15 @@ import butterknife.OnClick;
 
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = SignupActivity.class.getSimpleName();
+
     @BindView(R.id.appbar_signup)
     AppbarLayout appbarSignup;
     @BindView(R.id.iv_background_man)
     ImageView ivBackgroundMan;
     @BindView(R.id.iv_background_woman)
     ImageView ivBackgroundWoman;
+
     private SignupViewModel mViewModel;
-    private int index = 0;
     private DatabaseReference myRef;
 
     @Override
@@ -48,7 +49,7 @@ public class SignupActivity extends AppCompatActivity {
         binding.setViewModel(mViewModel);
         ButterKnife.bind(this);
         appbarSignup.setTheme(AppbarLayout.SIGNUP_PAGE_APPBAR);
-
+        setAppbarOnClickListener(appbarSignup);
         mViewModel.signup.set(generatedData());
         myRef = FirebaseDatabase.getInstance().getReference("toyou");
 
@@ -91,8 +92,6 @@ public class SignupActivity extends AppCompatActivity {
         } catch (KakaoParameterException e) {
             e.printStackTrace();
         }*/
-        myRef.setValue(index + " / hello, world!");
-        index++;
 
     }
 
@@ -109,13 +108,22 @@ public class SignupActivity extends AppCompatActivity {
                 break;
         }
     }
-    private SignupResult generatedData(){
+
+    private SignupResult generatedData() {
         SignupResult signupResult = new SignupResult();
         signupResult.setUserId(SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_ID));
         signupResult.setUserInviteCode(SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_CODE));
         signupResult.setUserName(SharedPreferenceManager.getInstance().getPrefStringData(SharedPreferenceManager.USER_NAME));
         signupResult.setUserProfileImageUrl(SharedPreferenceManager.getInstance().getPrefStringData(SharedPreferenceManager.USER_PROFILE));
         return signupResult;
+    }
 
+    public void setAppbarOnClickListener(AppbarLayout appbarLayout) {
+        appbarLayout.setAppbarOnClickListener(v -> {
+            onBackPressed();
+        }, AppbarLayout.APPBAR_LEFT_BUTTON);
+        appbarLayout.setAppbarOnClickListener(v -> {
+
+        }, AppbarLayout.APPBAR_RIGHT_BUTTON);
     }
 }

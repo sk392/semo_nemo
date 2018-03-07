@@ -104,7 +104,6 @@ public class LoginActivity extends BaseActivity {
 
                 Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
