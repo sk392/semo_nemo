@@ -29,6 +29,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.semonemo.latte.toyouproject.util.CommonNameSpace.DELAY_DAY_DEFAULT;
+
 public class HomeActivity extends BaseActivity {
     public static final String LETTER_DATA = "_letter_data_";
 
@@ -64,7 +66,7 @@ public class HomeActivity extends BaseActivity {
         for (long i = 0; i < 5; i++) {
             mLetterDtos.add(new LetterDto(i
                     , i + "편지이이이이이이이이이다다아아아아당당다아다아다앋아다아다아다ㅏㅇ다아다아닫"
-                    , "증장이", "유리닝", new Date()));
+                    , 323l, 525l, new Date(),DELAY_DAY_DEFAULT));
         }
         return mLetterDtos;
     }

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1060247614881",
+    "firebase_url": "https://toyou-c5da9.firebaseio.com",
+    "project_id": "toyou-c5da9",
+    "storage_bucket": "toyou-c5da9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060247614881:android:3f1b9000990d117b",
+        "android_client_info": {
+          "package_name": "com.semonemo.latte.toyouproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060247614881-e1r99tn7mg1aiqbrocs5vjc4i0r11mkn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2AXcJmi2wOzYL42kS-UvBdo0Th0Vh9fE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

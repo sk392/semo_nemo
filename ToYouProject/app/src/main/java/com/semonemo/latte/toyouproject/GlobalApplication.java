@@ -3,6 +3,7 @@ package com.semonemo.latte.toyouproject;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.firebase.FirebaseApp;
 import com.kakao.auth.ApprovalType;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.IApplicationConfig;

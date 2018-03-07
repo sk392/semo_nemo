@@ -3,13 +3,12 @@ package com.semonemo.latte.toyouproject.view;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
-import com.kakao.usermgmt.LoginButton;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
@@ -17,24 +16,21 @@ import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
 import com.semonemo.latte.toyouproject.R;
 import com.semonemo.latte.toyouproject.util.SharedPreferenceManager;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends BaseActivity {
     private static final String TAG = "LoginActivity";
     private SessionCallback callback;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
         callback = new SessionCallback();
         SharedPreferenceManager.getInstance().load(getApplicationContext());
         Session.getCurrentSession().addCallback(callback);
         Session.getCurrentSession().checkAndImplicitOpen();
+
     }
 
     @Override
@@ -94,7 +90,9 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onSuccess(UserProfile result) {
+                Log.d(TAG,"onSuccess");
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_NAME,result.getNickname());
+                SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_EMAIL,result.getEmail());
                 SharedPreferenceManager.getInstance().setPrefLongData(SharedPreferenceManager.USER_ID,result.getId());
                 long code = result.getId()%100000000;
                 SharedPreferenceManager.getInstance().setPrefLongData(SharedPreferenceManager.USER_CODE,code);
@@ -103,6 +101,7 @@ public class LoginActivity extends BaseActivity {
                         ,Session.getCurrentSession().getTokenInfo().getAccessToken().toString());
                 SharedPreferenceManager.getInstance().setPrefStringData(SharedPreferenceManager.USER_TOKEN_REFRESH
                         ,Session.getCurrentSession().getTokenInfo().getRefreshToken().toString());
+
                 Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
                 startActivity(intent);
                 finish();
@@ -121,6 +120,7 @@ public class LoginActivity extends BaseActivity {
         builder.build().show();
     }
 
+
     private void redirectLoginActivity(){
 
         final Intent intent = new Intent(this, LoginActivity.class);
@@ -128,4 +128,5 @@ public class LoginActivity extends BaseActivity {
         startActivity(intent);
         finish();
     }
+
 }

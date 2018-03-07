@@ -10,30 +10,34 @@ import java.util.Date;
 public class LetterDto implements Serializable {
     private long letterId;
     private String letterContent;
-    private String fromUser;
-    private String toUser;
+    private long fromUserId;
+    private long toUserId;
     private Date regDate;
+    private int delayDay;
 
     @Override
     public String toString() {
         return "LetterDto{" +
                 "letterId=" + letterId +
                 ", letterContent='" + letterContent + '\'' +
-                ", fromUser='" + fromUser + '\'' +
-                ", toUser='" + toUser + '\'' +
+                ", fromUserId=" + fromUserId +
+                ", toUserId=" + toUserId +
                 ", regDate=" + regDate +
+                ", delayDay=" + delayDay +
                 '}';
     }
 
-    public LetterDto(long letterId, String letterContent, String fromUser, String toUser, Date regDate) {
+    public LetterDto(long letterId, String letterContent, long fromUserId, long toUserId, Date regDate, int delayDay) {
         this.letterId = letterId;
         this.letterContent = letterContent;
-        this.fromUser = fromUser;
-        this.toUser = toUser;
+        this.fromUserId = fromUserId;
+        this.toUserId = toUserId;
         this.regDate = regDate;
+        this.delayDay = delayDay;
     }
 
     public long getLetterId() {
+
         return letterId;
     }
 
@@ -49,20 +53,20 @@ public class LetterDto implements Serializable {
         this.letterContent = letterContent;
     }
 
-    public String getFromUser() {
-        return fromUser;
+    public long getFromUserId() {
+        return fromUserId;
     }
 
-    public void setFromUser(String fromUser) {
-        this.fromUser = fromUser;
+    public void setFromUserId(long fromUserId) {
+        this.fromUserId = fromUserId;
     }
 
-    public String getToUser() {
-        return toUser;
+    public long getToUserId() {
+        return toUserId;
     }
 
-    public void setToUser(String toUser) {
-        this.toUser = toUser;
+    public void setToUserId(long toUserId) {
+        this.toUserId = toUserId;
     }
 
     public Date getRegDate() {
@@ -71,5 +75,13 @@ public class LetterDto implements Serializable {
 
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
+    }
+
+    public int getDelayDay() {
+        return delayDay;
+    }
+
+    public void setDelayDay(int delayDay) {
+        this.delayDay = delayDay;
     }
 }

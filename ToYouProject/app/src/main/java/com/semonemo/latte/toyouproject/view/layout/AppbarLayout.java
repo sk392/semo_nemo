@@ -30,11 +30,13 @@ public class AppbarLayout extends FrameLayout {
     private Context mContext;
     private View mView;
     private int mThemeType;
-
-    public static final int MAIN_PAGE_APPBAR = 1;
-    public static final int MY_PAGE_APPBAR = 2;
-    public static final int WRITE_PAGE_APPBAR = 3;
-    public static final int SIGNUP_PAGE_APPBAR = 4;
+    public static final int MAIN_PAGE_APPBAR = 101;
+    public static final int MY_PAGE_APPBAR = 102;
+    public static final int WRITE_PAGE_APPBAR = 103;
+    public static final int SIGNUP_PAGE_APPBAR = 104;
+    public static final int APPBAR_LEFT_BUTTON = 1;
+    public static final int APPBAR_RIGHT_BUTTON = 2;
+    public static final int APPBAR_RIGHT_LEFT_BUTTON = 3;
 
     @BindView(R.id.appbar_left_btn)
     ImageView appbarLeftBtn;
@@ -126,32 +128,23 @@ public class AppbarLayout extends FrameLayout {
         appbarTitle.setVisibility(GONE);
     }
 
+    public void setAppbarOnClickListener(OnClickListener onClickListener,int position) {
+        switch (position){
+            case APPBAR_LEFT_BUTTON :
+                appbarLeftBtn.setOnClickListener(onClickListener);
+                break;
 
-    @OnClick({R.id.appbar_left_btn, R.id.appbar_right_left_btn, R.id.appbar_right_btn})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.appbar_left_btn:
-                if(this.mThemeType==MAIN_PAGE_APPBAR){
-                    Toast.makeText(mContext,"마이페이지 이동",Toast.LENGTH_SHORT).show();
-                }else{
-                    ((Activity)mContext).onBackPressed();
-                }
+            case APPBAR_RIGHT_BUTTON :
+                appbarRightBtn.setOnClickListener(onClickListener);
                 break;
-            case R.id.appbar_right_left_btn:
-                if(this.mThemeType==MAIN_PAGE_APPBAR){
-                    Toast.makeText(mContext,"편지 작성페이지 이동",Toast.LENGTH_SHORT).show();
-                }
+            case APPBAR_RIGHT_LEFT_BUTTON :
+                appbarRightLeftBtn.setOnClickListener(onClickListener);
                 break;
-            case R.id.appbar_right_btn:
-                if(this.mThemeType==MAIN_PAGE_APPBAR || this.mThemeType==MY_PAGE_APPBAR){
-                    Toast.makeText(mContext,"설정페이지 이동",Toast.LENGTH_SHORT).show();
-                }else if(this.mThemeType == SIGNUP_PAGE_APPBAR){
-                    Intent intent = new Intent(mContext, HomeActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    mContext.startActivity(intent);
-                    ((Activity)mContext).finish();
-                }
-                break;
+
         }
+    }
+
+    public int getmThemeType() {
+        return this.mThemeType;
     }
 }

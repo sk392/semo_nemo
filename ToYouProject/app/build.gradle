@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -21,6 +21,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    dataBinding{
+        enabled true
+    }
 }
 
 
@@ -32,6 +35,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     //이미지 라이브러리 glide
     implementation 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor "com.github.bumptech.glide:compiler:4.5.0"
     //네트워크 통신 라이브러리 retrofit2
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -43,6 +47,7 @@ dependencies {
     //viewpagerindicator
     implementation 'com.romandanylyk:pageindicatorview:1.0.0'
 
+
     //fontlibrary
     implementation 'com.github.katoro:typekit:1.0.1'
 
@@ -53,8 +58,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //firebase
-    implementation 'com.google.firebase:firebase-database:11.8.0'
-
+    implementation 'com.google.firebase:firebase-core:11.4.2'
+    implementation 'com.google.firebase:firebase-database:11.4.2'
     // 카카오링크 sdk를 사용하기 위해 필요.
     implementation group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
 

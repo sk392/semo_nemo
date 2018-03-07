@@ -38,8 +38,8 @@ public class LetterDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_letter_detail);
         ButterKnife.bind(this);
         LetterDto letter = (LetterDto)getIntent().getExtras().getSerializable(LETTER_DATA);
-        tvFromName.setText(letter.getFromUser());
-        tvToName.setText(letter.getToUser());
+        tvFromName.setText(letter.getFromUserId()+"");
+        tvToName.setText(letter.getToUserId()+"");
 
         tvLetterDetailTo.setTypeface(Typeface.createFromAsset(getAssets(),getResources().getString(R.string.fontname_fish_chips)));
         tvLetterDetailFrom.setTypeface(Typeface.createFromAsset(getAssets(),getResources().getString(R.string.fontname_fish_chips)));

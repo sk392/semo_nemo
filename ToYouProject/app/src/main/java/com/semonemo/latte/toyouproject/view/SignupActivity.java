@@ -1,77 +1,99 @@
 package com.semonemo.latte.toyouproject.view;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.kakao.kakaolink.AppActionBuilder;
-import com.kakao.kakaolink.AppActionInfoBuilder;
-import com.kakao.kakaolink.KakaoLink;
-import com.kakao.kakaolink.KakaoTalkLinkMessageBuilder;
-import com.kakao.kakaolink.v2.KakaoLinkResponse;
-import com.kakao.kakaolink.v2.KakaoLinkService;
-import com.kakao.message.template.ButtonObject;
-import com.kakao.message.template.ContentObject;
-import com.kakao.message.template.FeedTemplate;
-import com.kakao.message.template.LinkObject;
-import com.kakao.message.template.SocialObject;
-import com.kakao.message.template.TextTemplate;
-import com.kakao.network.ErrorResult;
-import com.kakao.network.callback.ResponseCallback;
-import com.kakao.util.KakaoParameterException;
-import com.kakao.util.helper.log.Logger;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.semonemo.latte.toyouproject.R;
+import com.semonemo.latte.toyouproject.databinding.ActivitySignupBinding;
 import com.semonemo.latte.toyouproject.util.SharedPreferenceManager;
+import com.semonemo.latte.toyouproject.view.data.SignupResult;
 import com.semonemo.latte.toyouproject.view.layout.AppbarLayout;
+import com.semonemo.latte.toyouproject.view.viewmodel.SignupViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import retrofit2.http.Url;
 
 public class SignupActivity extends AppCompatActivity {
-
-    @BindView(R.id.et_name)
-    EditText etName;
-    @BindView(R.id.tv_comment)
-    TextView tvComment;
+    private static final String TAG = SignupActivity.class.getSimpleName();
+    @BindView(R.id.appbar_signup)
+    AppbarLayout appbarSignup;
     @BindView(R.id.iv_background_man)
     ImageView ivBackgroundMan;
     @BindView(R.id.iv_background_woman)
     ImageView ivBackgroundWoman;
-    @BindView(R.id.et_invite_code)
-    EditText etInviteCode;
-    @BindView(R.id.tv_my_invite_code)
-    TextView tvMyInviteCode;
-    @BindView(R.id.appbar_signup)
-    AppbarLayout appbarSignup;
-    @BindView(R.id.btn_invate)
-    Button btnInvate;
+    private SignupViewModel mViewModel;
+    private int index = 0;
+    private DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         bindView();
     }
 
     private void bindView() {
-        setContentView(R.layout.activity_signup);
+        ActivitySignupBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_signup);
+        mViewModel = new SignupViewModel();
+        binding.setViewModel(mViewModel);
         ButterKnife.bind(this);
         appbarSignup.setTheme(AppbarLayout.SIGNUP_PAGE_APPBAR);
-        etName.setText(SharedPreferenceManager.getInstance().getPrefStringData(SharedPreferenceManager.USER_NAME));
-        etName.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus) {
-                tvComment.setVisibility(View.INVISIBLE);
-            } else {
-                tvComment.setVisibility(View.VISIBLE);
 
+        mViewModel.signup.set(generatedData());
+        myRef = FirebaseDatabase.getInstance().getReference("toyou");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "Value is: " + value);
+                mViewModel.userName.set(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+    }
+
+
+    @OnClick(R.id.btn_invate)
+    public void onViewClicked() {
+       /* try {
+            KakaoLink kakaoLink = KakaoLink.getKakaoLink(getApplicationContext());
+            KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder
+                    = kakaoLink.createKakaoTalkLinkMessageBuilder();
+            kakaoTalkLinkMessageBuilder.addText(SharedPreferenceManager.getInstance()
+                    .getPrefStringData(SharedPreferenceManager.USER_NAME)
+                    + getResources().getString(R.string.link_message_content)
+                    + SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_CODE));
+            kakaoTalkLinkMessageBuilder.addImage(getResources().getString(R.string.image_url), 200, 200);
+            kakaoTalkLinkMessageBuilder.addAppButton("다운 받으러 가기",
+                    new AppActionBuilder()
+                            .addActionInfo(AppActionInfoBuilder.createAndroidActionInfoBuilder().setMarketParam("").build())
+                            .build());
+            kakaoLink.sendMessage(kakaoTalkLinkMessageBuilder, this);
+
+        } catch (KakaoParameterException e) {
+            e.printStackTrace();
+        }*/
+        myRef.setValue(index + " / hello, world!");
+        index++;
+
     }
 
     @OnClick({R.id.iv_background_man, R.id.iv_background_woman})
@@ -82,33 +104,18 @@ public class SignupActivity extends AppCompatActivity {
                 ivBackgroundWoman.setImageResource(R.color.transparent);
                 break;
             case R.id.iv_background_woman:
-                ivBackgroundMan.setImageResource(R.color.transparent);
                 ivBackgroundWoman.setImageResource(R.color.dimmed_color);
+                ivBackgroundMan.setImageResource(R.color.transparent);
                 break;
         }
     }
-
-    @OnClick(R.id.btn_invate)
-    public void onViewClicked() {
-        try {
-            KakaoLink kakaoLink = KakaoLink.getKakaoLink(getApplicationContext());
-            KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder
-                    = kakaoLink.createKakaoTalkLinkMessageBuilder();
-            kakaoTalkLinkMessageBuilder.addText(SharedPreferenceManager.getInstance()
-                    .getPrefStringData(SharedPreferenceManager.USER_NAME)
-                    +getResources().getString(R.string.link_message_content)
-                    +SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_CODE));
-            kakaoTalkLinkMessageBuilder.addImage(getResources().getString(R.string.image_url),200,200);
-            kakaoTalkLinkMessageBuilder.addAppButton("다운 받으러 가기",
-                    new AppActionBuilder()
-                            .addActionInfo(AppActionInfoBuilder.createAndroidActionInfoBuilder().setMarketParam("").build())
-                            .build());
-            kakaoLink.sendMessage(kakaoTalkLinkMessageBuilder, this);
-
-        } catch (KakaoParameterException e) {
-            e.printStackTrace();
-        }
-
+    private SignupResult generatedData(){
+        SignupResult signupResult = new SignupResult();
+        signupResult.setUserId(SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_ID));
+        signupResult.setUserInviteCode(SharedPreferenceManager.getInstance().getPrefLongData(SharedPreferenceManager.USER_CODE));
+        signupResult.setUserName(SharedPreferenceManager.getInstance().getPrefStringData(SharedPreferenceManager.USER_NAME));
+        signupResult.setUserProfileImageUrl(SharedPreferenceManager.getInstance().getPrefStringData(SharedPreferenceManager.USER_PROFILE));
+        return signupResult;
 
     }
 }

@@ -10,7 +10,8 @@ public class UserDto implements Serializable {
     private long id;
     private String name;
     private String email;
-    private String profilePath;
+    private String profileImagePath;
+    private String inviteCode;
 
     @Override
     public String toString() {
@@ -18,7 +19,8 @@ public class UserDto implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", profilePath='" + profilePath + '\'' +
+                ", profileImagePath='" + profileImagePath + '\'' +
+                ", inviteCode='" + inviteCode + '\'' +
                 '}';
     }
 
@@ -46,18 +48,27 @@ public class UserDto implements Serializable {
         this.email = email;
     }
 
-    public String getProfilePath() {
-        return profilePath;
+    public String getProfileImagePath() {
+        return profileImagePath;
     }
 
-    public void setProfilePath(String profilePath) {
-        this.profilePath = profilePath;
+    public void setProfileImagePath(String profileImagePath) {
+        this.profileImagePath = profileImagePath;
     }
 
-    public UserDto(long id, String name, String email, String profilePath) {
+    public String getInviteCode() {
+        return inviteCode;
+    }
+
+    public void setInviteCode(String inviteCode) {
+        this.inviteCode = inviteCode;
+    }
+
+    public UserDto(long id, String name, String email, String profileImagePath, String inviteCode) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.profilePath = profilePath;
+        this.profileImagePath = profileImagePath;
+        this.inviteCode = inviteCode;
     }
 }
