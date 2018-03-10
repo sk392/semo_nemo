@@ -11,7 +11,9 @@ public class LetterDto implements Serializable {
     private long letterId;
     private String letterContent;
     private long fromUserId;
+    private String fromUserName;
     private long toUserId;
+    private String toUserName;
     private Date regDate;
     private int delayDay;
 
@@ -21,20 +23,44 @@ public class LetterDto implements Serializable {
                 "letterId=" + letterId +
                 ", letterContent='" + letterContent + '\'' +
                 ", fromUserId=" + fromUserId +
+                ", fromUserName='" + fromUserName + '\'' +
                 ", toUserId=" + toUserId +
+                ", toUserName='" + toUserName + '\'' +
                 ", regDate=" + regDate +
                 ", delayDay=" + delayDay +
                 '}';
     }
 
-    public LetterDto(long letterId, String letterContent, long fromUserId, long toUserId, Date regDate, int delayDay) {
+    public LetterDto(long letterId, String letterContent, long fromUserId, String fromUserName, long toUserId, String toUserName, Date regDate, int delayDay) {
         this.letterId = letterId;
         this.letterContent = letterContent;
         this.fromUserId = fromUserId;
+        this.fromUserName = fromUserName;
         this.toUserId = toUserId;
+        this.toUserName = toUserName;
         this.regDate = regDate;
         this.delayDay = delayDay;
     }
+
+    public String getFromUserName() {
+        return fromUserName;
+    }
+
+    public void setFromUserName(String fromUserName) {
+        this.fromUserName = fromUserName;
+    }
+
+    public String getToUserName() {
+        return toUserName;
+    }
+
+    public void setToUserName(String toUserName) {
+        this.toUserName = toUserName;
+    }
+
+    public LetterDto(){
+
+    };
 
     public long getLetterId() {
 

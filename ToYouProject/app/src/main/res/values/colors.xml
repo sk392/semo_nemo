@@ -9,4 +9,8 @@
     <color name="right_gray">#66ffffff</color>
     <color name="dimmed_color">#33000000</color>
     <color name="reddish_pink">#ff335f</color>
+    <color name="themeManBackgroundColor">#162243</color>
+    <color name="themeWomanBackgroundColor">#f6b8b8</color>
+    <color name="themeManFontColor">#ffffff</color>
+    <color name="themeWomanFontColor">#1d1b1b</color>
 </resources>

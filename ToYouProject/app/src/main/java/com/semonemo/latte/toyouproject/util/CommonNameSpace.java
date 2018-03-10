@@ -5,9 +5,8 @@ package com.semonemo.latte.toyouproject.util;
  */
 
 public class CommonNameSpace {
-    S
+    public static final String DATABASE_NAME = "toyou";
     public static final String DATABASE_TABLE_USER = "users";
     public static final String DATABASE_TABLE_LETTERS = "letters";
-    public static final String DATABASE_TABLE_COUPLES = "couples";
     public static final int DELAY_DAY_DEFAULT = 30;
 }

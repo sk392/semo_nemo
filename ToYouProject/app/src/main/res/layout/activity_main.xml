@@ -7,11 +7,9 @@
     android:orientation="vertical"
     tools:context="com.semonemo.latte.toyouproject.view.MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_login"
-        android:onClick="onClick"
-        android:text="login"/>
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/letter_detail_background"/>
 </LinearLayout>

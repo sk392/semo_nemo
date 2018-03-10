@@ -13,9 +13,14 @@ public class SharedPreferenceManager {
     public static final String USER_CODE = "_user_code_";
     public static final String USER_NAME = "_user_name_";
     public static final String USER_EMAIL = "_user_email_";
+    public static final String USER_TARGET_CODE = "_user_target_code_";
     public static final String USER_TOKEN_ACCESS = "_user_access_";
     public static final String USER_TOKEN_REFRESH = "_user_refresh_";
     public static final String USER_PROFILE = "_user_profile_";
+    public static final String THEME_BACKGROUND_COLOR = "_theme_background_color_";
+    public static final String THEME_FONT_COLOR = "_theme_font_color_";
+    public static final String THEME_BACKGROUND_IMAGE = "_theme_background_image_";
+    public static final String THEME_BACKGROUND_LETTER_IMAGE = "_theme_background_letter_image_";
 
     private static SharedPreferenceManager sharedPreferencesManager;
     private SharedPreferences pref;
@@ -40,7 +45,7 @@ public class SharedPreferenceManager {
         getPref(context);
     }
     public String getPrefStringData(String key){
-        return pref.getString(key, null);
+        return pref.getString(key, "");
     }
 
     public int getPrefIntData(String key){

@@ -3,7 +3,7 @@
     <dimen name="appbar_size">45dp</dimen>
     <dimen name="common_side_size">16dp</dimen>
     <dimen name="appbar_icon_size">27dp</dimen>
-    <dimen name="appbar_title_size">36sp</dimen>
+    <dimen name="appbar_title_size">45sp</dimen>
     <dimen name="main_letter_date_size">50sp</dimen>
     <dimen name="letter_detail_size">42sp</dimen>
     <dimen name="letter_detail_name_size">36sp</dimen>

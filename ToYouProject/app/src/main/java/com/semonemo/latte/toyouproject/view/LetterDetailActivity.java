@@ -2,12 +2,16 @@ package com.semonemo.latte.toyouproject.view;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.semonemo.latte.toyouproject.R;
 import com.semonemo.latte.toyouproject.dto.LetterDto;
+import com.semonemo.latte.toyouproject.util.SharedPreferenceManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +31,10 @@ public class LetterDetailActivity extends AppCompatActivity {
     TextView tvLetterDetailFrom;
     @BindView(R.id.tv_from_name)
     TextView tvFromName;
+    @BindView(R.id.iv_letter_detail)
+    ImageView ivLetterDetail;
+    @BindView(R.id.cl_letter_deatail)
+    ConstraintLayout clLetterDeatail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +42,23 @@ public class LetterDetailActivity extends AppCompatActivity {
         bindView();
     }
 
-    private void bindView(){
+    private void bindView() {
         setContentView(R.layout.activity_letter_detail);
         ButterKnife.bind(this);
-        LetterDto letter = (LetterDto)getIntent().getExtras().getSerializable(LETTER_DATA);
-        tvFromName.setText(letter.getFromUserId()+"");
-        tvToName.setText(letter.getToUserId()+"");
+        LetterDto letter = (LetterDto) getIntent().getExtras().getSerializable(LETTER_DATA);
 
-        tvLetterDetailTo.setTypeface(Typeface.createFromAsset(getAssets(),getResources().getString(R.string.fontname_fish_chips)));
-        tvLetterDetailFrom.setTypeface(Typeface.createFromAsset(getAssets(),getResources().getString(R.string.fontname_fish_chips)));
-        tvFromName.setTypeface(Typeface.createFromAsset(getAssets(),getResources().getString(R.string.fontname_nanum_ultra_light)));
-        tvToName.setTypeface(Typeface.createFromAsset(getAssets(),getResources().getString(R.string.fontname_nanum_ultra_light)));
-        tvLetterContent.setTypeface(Typeface.createFromAsset(getAssets(),getResources().getString(R.string.fontname_nanum_ultra_light)));
+        clLetterDeatail.setBackgroundColor(SharedPreferenceManager.getInstance()
+                .getPrefIntData(SharedPreferenceManager.THEME_BACKGROUND_COLOR));
+        ivLetterDetail.setBackground(getResources().getDrawable(SharedPreferenceManager.getInstance()
+                .getPrefIntData(SharedPreferenceManager.THEME_BACKGROUND_LETTER_IMAGE)));
+        tvFromName.setText(letter.getFromUserId() + "");
+        tvToName.setText(letter.getToUserId() + "");
+
+        tvLetterDetailTo.setTypeface(Typeface.createFromAsset(getAssets(), getResources().getString(R.string.fontname_fish_chips)));
+        tvLetterDetailFrom.setTypeface(Typeface.createFromAsset(getAssets(), getResources().getString(R.string.fontname_fish_chips)));
+        tvFromName.setTypeface(Typeface.createFromAsset(getAssets(), getResources().getString(R.string.fontname_nanum_ultra_light)));
+        tvToName.setTypeface(Typeface.createFromAsset(getAssets(), getResources().getString(R.string.fontname_nanum_ultra_light)));
+        tvLetterContent.setTypeface(Typeface.createFromAsset(getAssets(), getResources().getString(R.string.fontname_nanum_ultra_light)));
 
     }
 

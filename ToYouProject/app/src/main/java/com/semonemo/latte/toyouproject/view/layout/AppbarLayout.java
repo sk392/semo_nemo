@@ -9,12 +9,15 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.semonemo.latte.toyouproject.R;
+import com.semonemo.latte.toyouproject.util.SharedPreferenceManager;
 import com.semonemo.latte.toyouproject.view.HomeActivity;
 
 import butterknife.BindView;
@@ -29,7 +32,7 @@ public class AppbarLayout extends FrameLayout {
 
     private Context mContext;
     private View mView;
-    private int mThemeType;
+    private int themeType;
     public static final int MAIN_PAGE_APPBAR = 101;
     public static final int MY_PAGE_APPBAR = 102;
     public static final int WRITE_PAGE_APPBAR = 103;
@@ -51,13 +54,18 @@ public class AppbarLayout extends FrameLayout {
         super(context, attrs);
         this.mContext = context;
         mView = LayoutInflater.from(mContext).inflate(R.layout.layout_appbar, this, false);
+        mView.setBackgroundColor(getResources().getColor(SharedPreferenceManager.getInstance()
+                .getPrefIntData(SharedPreferenceManager.THEME_BACKGROUND_COLOR)));
+        ((Activity)context).getWindow().setStatusBarColor(getResources().getColor(SharedPreferenceManager.getInstance()
+                .getPrefIntData(SharedPreferenceManager.THEME_BACKGROUND_COLOR)));
+
         this.addView(mView);
         ButterKnife.bind(this);
         appbarTitle.setTypeface(Typeface.createFromAsset(mContext.getAssets(),"FISH&CHIPS-Regular.ttf"));
     }
 
     public void setTheme(int theme) {
-        mThemeType = theme;
+        this.themeType = theme;
         switch (theme) {
             case MAIN_PAGE_APPBAR:
                 setThemeMain();
@@ -112,12 +120,11 @@ public class AppbarLayout extends FrameLayout {
     }
 
     private void setThemeSignup() {
-        appbarLeftBtn.setVisibility(VISIBLE);
+        appbarLeftBtn.setVisibility(GONE);
         appbarRightBtn.setVisibility(VISIBLE);
         appbarRightLeftBtn.setVisibility(GONE);
         appbarTitle.setVisibility(GONE);
 
-        appbarLeftBtn.setBackground(getResources().getDrawable(R.drawable.kakaostory_icon));
         appbarRightBtn.setBackground(getResources().getDrawable(R.drawable.kakaostory_icon));
     }
 
@@ -133,7 +140,6 @@ public class AppbarLayout extends FrameLayout {
             case APPBAR_LEFT_BUTTON :
                 appbarLeftBtn.setOnClickListener(onClickListener);
                 break;
-
             case APPBAR_RIGHT_BUTTON :
                 appbarRightBtn.setOnClickListener(onClickListener);
                 break;
@@ -144,7 +150,8 @@ public class AppbarLayout extends FrameLayout {
         }
     }
 
-    public int getmThemeType() {
-        return this.mThemeType;
+    public int getThemeType() {
+        return this.themeType;
     }
+
 }
