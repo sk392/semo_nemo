@@ -200,7 +200,6 @@ public class SignupActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.d(TAG, "The read failed = " + databaseError.getMessage());
                     }
                 });
     }

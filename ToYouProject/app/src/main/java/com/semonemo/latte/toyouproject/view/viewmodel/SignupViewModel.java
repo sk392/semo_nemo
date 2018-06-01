@@ -22,8 +22,7 @@ public class SignupViewModel {
         user.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable observable, int i) {
-                Log.d("ㅅㅁㅎ","콜백 호출잼");
-                UserDto result =  SignupViewModel.this.user.get();
+                UserDto result =  user.get();
                 userName.set(result.getName());
                 userId.set(result.getId());
                 userInviteCode.set(result.getInviteCode());
@@ -32,10 +31,4 @@ public class SignupViewModel {
         });
 
     }
-
-
-
-
-
-
 }

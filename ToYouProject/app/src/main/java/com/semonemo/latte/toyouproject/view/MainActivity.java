@@ -56,10 +56,6 @@ public class MainActivity extends BaseActivity {
         Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
     public static void checkSharedColor(){
-        Log.e(TAG,"THEME_BACKGROUND_COLOR : "+SharedPreferenceManager.getInstance().getPrefIntData(SharedPreferenceManager.THEME_BACKGROUND_COLOR));
-        Log.e(TAG,"THEME_BACKGROUND_IMAGE : "+SharedPreferenceManager.getInstance().getPrefIntData(SharedPreferenceManager.THEME_BACKGROUND_IMAGE));
-        Log.e(TAG,"THEME_BACKGROUND_LETTER_IMAGE : "+SharedPreferenceManager.getInstance().getPrefIntData(SharedPreferenceManager.THEME_BACKGROUND_LETTER_IMAGE));
-        Log.e(TAG,"THEME_FONT_COLOR : "+SharedPreferenceManager.getInstance().getPrefIntData(SharedPreferenceManager.THEME_FONT_COLOR));
 
     }
 }

@@ -13,11 +13,11 @@ public class UserDto implements Serializable {
     private String profileImagePath;
     private String inviteCode;
     private String targetCode;
+    private String firebaseToken;
 
     //firebase datasnapshot 에서 해당 객체를 생성할 때 빈생성자로 생성한  후에 셋터를 통해서 값을 넣는다
     public UserDto() {
     }
-
     @Override
     public String toString() {
         return "UserDto{" +
@@ -37,6 +37,26 @@ public class UserDto implements Serializable {
     public void setTargetCode(String targetCode) {
         this.targetCode = targetCode;
     }
+
+    public UserDto(long id, String name, String email, String profileImagePath, String inviteCode) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.profileImagePath = profileImagePath;
+        this.inviteCode = inviteCode;
+        this.firebaseToken = "";
+        this.targetCode ="0";
+    }
+
+    public String getFirebaseToken() {
+        return firebaseToken;
+    }
+
+    public void setFirebaseToken(String firebaseToken) {
+        this.firebaseToken = firebaseToken;
+    }
+
+
 
     public long getId() {
         return id;
@@ -78,12 +98,4 @@ public class UserDto implements Serializable {
         this.inviteCode = inviteCode;
     }
 
-    public UserDto(long id, String name, String email, String profileImagePath, String inviteCode) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.profileImagePath = profileImagePath;
-        this.inviteCode = inviteCode;
-        this.targetCode ="0";
-    }
 }

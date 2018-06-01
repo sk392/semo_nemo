@@ -99,7 +99,6 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onSuccess(UserProfile result) {
-                Log.d(TAG,"onSuccess");
                 UserDto userDto = generatedUser(result);
                 inserUser(userDto);
                 Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
